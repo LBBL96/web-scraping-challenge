@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Mars</title>
+</head>
+<body>
+    
+<!-- Main jumbotron for backgroud image -->
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Welcome to Mars!</h1>
+      <p>The place for the latest news, photos, and facts about the planet Mars.</p>
+      <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Click for Latest Facts</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-primary">News</h2>
+        <h5>{{ Mars.headline }}</h5>
+        <p>{{ Mars.article }}</p>
+        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-primary">Weather</h2>
+        <p> {{ Mars.Mars_Weather }}</p>
+        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-primary">Facts</h2>
+        <!-- <p>{{ Mars.Mars_facts }}</p> -->
+        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+      <!-- </div>
+      <div class="row"><br></div>
+      <div class="row">
+        <div class="col-md-4">
+          <h2 class="text-primary">News</h2>
+          <h5>{{ placeholder }}</h5> -->
+          <!-- <p>{{ Mars.article }}</p>-->
+        <!-- </div>
+        <div class="col-md-4">
+          <h2 class="text-primary">Images</h2>
+          <p> {{ placeholder}}</p> -->
+          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+        <!-- </div>
+        <div class="col-md-4">
+          <h2 class="text-primary">Photos</h2>
+          <p>{{ placeholder }}</p> -->
+          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+        <!-- </div> -->
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+
+
+
+</body>
+</html>
