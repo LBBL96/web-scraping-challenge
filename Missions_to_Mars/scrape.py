@@ -6,72 +6,45 @@ def init_browser():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
-def NASA_scrape():
+def Mars_scrape():
+
+    # Creating browser object
     browser = init_browser()
     
-    # URL to visit
+    # First URL to visit is NASA for news
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
 
-    # Loading Beautiful Soup
-    html = browser.html
-    soup = BeautifulSoup(html, "html.parser")
-
-    # Pulling headline and leading paragraph
+    # Pulling headline and leading paragraph using splinter
     headline = browser.find_by_css(".content_title")[0].text
     article = browser.find_by_css(".article_teaser_body")[0].text
 
-    # Putting items in a dictionary
-    Mars_news = {
-         "headline": headline,
-         "article": article
-    }
-    
-    # Close the browser after scraping
-    browser.quit()
-
-    return Mars_news
-
-def mars_weather_scrape():
+    # New browser object
     browser = init_browser()
 
-    # Mars Weather twitter account 
+    # Changed URL to Mars Weather twitter account 
     url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(url)
 
-    # Loading Beautiful Soup
-    html = browser.html
-    soup = BeautifulSoup(html, "html.parser")
-
     # class is "TweetTextSize"
-    # using Splinter within a list comprehension to strip the tweet down to its text; 
+    # using splinter within a list comprehension to strip the tweet down to its text; 
     # we want the top tweet, so that's index 0
     mars_weather = [tweet.text.strip() for tweet in browser.find_by_css(".TweetTextSize")][0]
 
-    # Putting into dictionary
-    weather = {
-        "Mars_Weather": mars_weather
-    }
-
-    # Close the browser after scraping
-    browser.quit()
-    
-    return weather
-
-def JPL_scrape():
+    # New browser object
     browser = init_browser()
 
     # NASA's JPL website
     url = "https://jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(url)
 
-    # Loading Beautiful Soup
+    # Updating Beautiful Soup
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
 
     img_source = soup.find(class_ = "carousel_item")['style']
 
-    # Needed image string is between two single quotation marks
+    # Needed image string is between two single quotation marks, so I'm splitting
     # I need the second of the three pieces
     img_string = img_source.split("'")[1]
     
@@ -79,24 +52,14 @@ def JPL_scrape():
     base_url = "https://jpl.nasa.gov"
     featured_image_url = base_url + img_string
 
-    # Put image in a dictionary
-    featured_image = {
-        "featured_image_url": featured_image_url
-    }
-
-    # Close the browser after scraping
-    browser.quit()
-
-    return featured_image
-
-def Mars_Facts_scrape():
+    # New browser object
     browser = init_browser()
 
-    # Space Facts
+    # Change to Space Facts URL
     url = "https://space-facts.com/mars/"
     browser.visit(url)
 
-    # Loading Beautiful Soup
+    # Updating Beautiful Soup
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
 
@@ -106,18 +69,10 @@ def Mars_Facts_scrape():
     # Using pandas to convert the table
     mars_facts = pd.read_html(str(table))
 
-    # Converting to JSON
-    mars_table = mars_facts[0].to_json(orient='records')
-
-    # Close the browser after scraping
-    browser.quit()
-
-    return mars_facts
-
-def USGS_scrape():
+    # New browser object
     browser = init_browser()
 
-    # USGS photos of Mars' hemispheres
+    # Move to USGS for photos of Mars' hemispheres
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)
     
@@ -134,7 +89,7 @@ def USGS_scrape():
 
     # Step 1
 
-    # I'll make a list to contain the elements; 'title' is what the project calls for
+    # I'll make a list to contain the titles of the photos
     title = []
 
     # There are four elements to find, so I'll set this up to loop four times
@@ -198,14 +153,13 @@ def USGS_scrape():
         
         # Add to list
         image_url.append(img_url)
-    
-    # Now I need to make dictionaries for each image, with title and image_url as keys
 
-    # I'll store them in this list:
+    # Now use a while loop to put them into a dictionary
+    
+    # I'll store them in this list temporarily:
     hemisphere_image_urls = []
 
-    # Now use a while loop to capture them as separate dictionaries (as opposed to zipping into tuples)
-    # The while will allow me to use an index
+    # The while loop will allow me to use an index
     i = 0
 
     while i < 4:
@@ -213,12 +167,23 @@ def USGS_scrape():
         {'title': title[i], 'image_url': image_url[i]})
         i += 1
 
-
     # Close the browser after scraping
     browser.quit()
 
-    return hemisphere_image_urls
+    # Dictionary to return
+
+    mars_data = {
+        "Mars_News_Headline": headline,
+        "Mars_News_Article": article,
+        "Mars_Weather": mars_weather,
+        "Mars_Featured_Image": featured_image_url,
+        "Mars_Facts": mars_facts,
+        "Mars_Hemisphere": hemisphere_image_urls
+
+    }
+
+    return mars_data
 
 if __name__ == "__main__":
-    data = [NASA_scrape(), mars_weather_scrape(), JPL_scrape(), Mars_Facts_scrape(), USGS_scrape()]
+    data = Mars_scrape()
     print(data)
