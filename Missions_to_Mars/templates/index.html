@@ -10,66 +10,166 @@
 <body>
     
 <!-- Main jumbotron for backgroud image -->
-<div class="jumbotron">
+<!-- <div class="jumbotron">
     <div class="container">
+      
       <h1 class="display-3">Welcome to Mars!</h1>
       <p>The place for the latest news, photos, and facts about the planet Mars.</p>
       <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Click for Latest Facts</a></p>
     </div>
-  </div>
+  </div> -->
+  <div class="card bg-dark text-white">
+    
+      <img src="{{ mars.Mars_Featured_Image }}"  class="card-img" alt="">
+      <div class="card-img-overlay">
+        <!-- <h2 class="card-title text-primary">Featured Image</h2> -->
+        <h1 class="display-3 text-primary">Welcome to Mars!</h1>
+        <p>The place for the latest news, photos, and facts about the planet Mars.</p>
+        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+        <!-- <p class="card-text">Last updated 3 mins ago</p> -->
+        <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Click for Latest Facts</a></p>
+      </div>
+    </div>
 
   <div class="container">
-    <!-- Example row of columns -->
+
+    <div class="row">
+
+      <div class="card-group">
+          <div class="card">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h2 class="card-title text-primary">News</h2>
+              <p class="card-text"><b>{{ mars.Mars_News_Headline }}</b></p>
+              <p class="card-text">{{ mars.Mars_News_Article }}</p>
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+          <div class="card">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <h2 class="text-primary">Weather</h2>
+              <p class="card-text">{{ mars.Mars_Weather }}</p>
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+          <div class="card">
+              <img src=""  class="card-img-top" alt="">
+              <div class="card-body">
+                <h2 class="text-primary">Facts</h2>
+                <h6 class="card-title">{{ mars.mars_facts|safe }}</h6>
+                <p class="card-text"></p>
+              <!-- <h2 class="card-title text-primary">Featured Image</h2>
+              <p class="card-text">source: jpl.nasa.org</p> -->
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+          <div class="card-group">
+              <div class="card">
+                  <img src="{{ mars.Mars_Hemisphere[0]}}" class="card-img-bottom" alt="Cerberus Hemisphere"> 
+                <div class="card-body">
+                  <h3 class="card-title text-primary">{{ mars.Mars_Hemisphere[0]}}/h3>
+                  <p class="card-text"></p>
+                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+              </div>
+              <div class="card">
+                  <img src="{{ mars.Mars_Featured_Image }}" class="card-img-top" alt="..."> 
+                <div class="card-body">
+                    <h2 class="text-primary">Weather</h2>
+                  <p class="card-text">{{ mars.Mars_Weather }}</p>
+                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+              </div>
+              <div class="card">
+                  <img src="{{ mars.Mars_Featured_Image }}" class="card-img-top" alt="..."> 
+                <div class="card-body">
+                    <h2 class="text-primary">Weather</h2>
+                  <p class="card-text">{{ mars.Mars_Weather }}</p>
+                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+              </div>
+
+                  
+                  <!-- <h2 class="card-title text-primary">Featured Image</h2>
+                  <p class="card-text">source: jpl.nasa.org</p> -->
+                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                
+              <!-- </div> -->
+            </div>
+          </div>
+
+    <!-- Example row of columns
     <div class="row">
       <div class="col-md-4">
         <h2 class="text-primary">News</h2>
-        <h5>{{ Mars.headline }}</h5>
-        <p>{{ Mars.article }}</p>
-        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      </div>
+        
+        < <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+      <!-- </div>
+      
+      <div class="row">
+          <div class="col-md-4">
+            <h2 class="text-primary">Featured Image</h2>
+            
+           
+            <! <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+          <!-- </div>
+
       <div class="col-md-4">
-        <h2 class="text-primary">Weather</h2>
-        <p> {{ Mars.Mars_Weather }}</p>
+        <h2 class="text-primary">Weather</h2> -->
+        <!-- <p> </p> -->
         <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      </div>
+      <!-- </div>
       <div class="col-md-4">
-        <h2 class="text-primary">Facts</h2>
+        <h2 class="text-primary">Featured Image</h2> --> 
         <!-- <figure class="figure"> -->
-          <img class="img_fluid" src="{{ Mars.featured_image_url }}">
+          <!-- <div class="container"></div> -->
+         
           
       <!-- </figure> -->
-        
-          <!-- <div class="card" style="width: 18rem;"> -->
-            <!-- <img src= {{  Mars.featured_image_url }}  class="card-img-top" alt="..."> -->
-            <!-- <div class="card-body"> -->
-              <!-- <h5 class="card-title">Card title</h5> -->
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-            <!-- </div> -->
-        </div>
-        <!-- <p>{{ Mars.Mars_facts }}</p> -->
+
+
+
+<!--       
+            <div class="col-md-4">
+              <h2 class="text-primary">Weather</h2>
+              <p> </p>
+             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+            <!-- </div>
+            <div class="col-md-4">
+              <h2 class="text-primary">Featured Image</h2> --> 
+              <!-- <figure class="figure"> -->
+                <!-- <div class="container"></div> -->
+        <!-- <p></p> -->
         <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
       <!-- </div>
       <div class="row"><br></div>
       <div class="row">
         <div class="col-md-4">
           <h2 class="text-primary">News</h2>
-          <h5>{{ placeholder }}</h5> -->
-          <!-- <p>{{ Mars.article }}</p>-->
+          <h5></h5> -->
+          <!-- <p></p>-->
         <!-- </div>
         <div class="col-md-4">
           <h2 class="text-primary">Images</h2>
-          <p> {{ placeholder}}</p> -->
+          <p> </p> -->
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
         <!-- </div>
         <div class="col-md-4">
           <h2 class="text-primary">Photos</h2>
-          <p>{{ placeholder }}</p> -->
+          <p></p> -->
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
         <!-- </div> -->
     </div>
 
-    <hr>
+
+
+ 
 
   </div> <!-- /container -->
 
