@@ -8,25 +8,19 @@
     <title>Mars</title>
 </head>
 <body>
-    
-<!-- Main jumbotron for backgroud image -->
-<!-- <div class="jumbotron">
-    <div class="container">
-      
-      <h1 class="display-3">Welcome to Mars!</h1>
-      <p>The place for the latest news, photos, and facts about the planet Mars.</p>
-      <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Click for Latest Facts</a></p>
-    </div>
-  </div> -->
+  
+  <!-- The large header class allows the featured image to be a background. -->
   <div class="card bg-dark text-white">
-    
+
+      <!-- Image scraped from jpl.nasa.gov  -->
       <img src="{{ mars.Mars_Featured_Image }}"  class="card-img" alt="">
       <div class="card-img-overlay">
-        <!-- <h2 class="card-title text-primary">Featured Image</h2> -->
+
+      <!-- Text for the top of the page. -->
         <h1 class="display-3 text-primary">Welcome to Mars!</h1>
         <p>The place for the latest news, photos, and facts about the planet Mars.</p>
-        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-        <!-- <p class="card-text">Last updated 3 mins ago</p> -->
+
+       <!-- The button to take us away. -->
         <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Click for Latest Facts</a></p>
       </div>
     </div>
@@ -34,147 +28,50 @@
   <div class="container">
 
     <div class="row">
-
+      <!-- Cards to hold the news and weather -->
       <div class="card-group">
           <div class="card">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body">
               <h2 class="card-title text-primary">News</h2>
               <p class="card-text"><b>{{ mars.Mars_News_Headline }}</b></p>
               <p class="card-text">{{ mars.Mars_News_Article }}</p>
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
             </div>
           </div>
           <div class="card">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body">
                 <h2 class="text-primary">Weather</h2>
               <p class="card-text">{{ mars.Mars_Weather }}</p>
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-            </div>
-          </div>
-          <div class="card">
-              <img src=""  class="card-img-top" alt="">
-              <div class="card-body">
-                <h2 class="text-primary">Facts</h2>
-                <h6 class="card-title">{{ mars.mars_facts|safe }}</h6>
-                <p class="card-text"></p>
-              <!-- <h2 class="card-title text-primary">Featured Image</h2>
-              <p class="card-text">source: jpl.nasa.org</p> -->
-              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
-
-          <div class="card-group">
-              <div class="card">
-                  <img src="{{ mars.Mars_Hemisphere[0]}}" class="card-img-bottom" alt="Cerberus Hemisphere"> 
-                <div class="card-body">
-                  <h3 class="card-title text-primary">{{ mars.Mars_Hemisphere[0]}}/h3>
-                  <p class="card-text"></p>
-                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                </div>
+      <!-- Next row holds the facts table -->
+      <!-- <div class="row"> -->
+              <div class="col-md-6 mt-4">
+                  <h2 class = "text-primary">Mars Facts</h2>
+                  <hr>
+                  {{ mars.Mars_Facts | safe }}
+              </div> 
+      <!-- </div> -->
+      <!-- New row for the hemispheres -->
+              <div class="row mt-5">
+                  <div class="col-md-12 text-center">
+                      <h2 class = "text-primary">Mars Hemispheres</h2>
+                  </div>
+              <!-- "for" loop to go through the dictionary -->
+          {% for hemisphere in mars.Mars_Hemisphere %}
+              <div class="col-md-6">
+                  <figure class="figure">
+                      <img class = "figure-img img-fluid my-1" src="{{ hemisphere.image_url}}"> 
+                      <figcaption class = "figure-caption text-primary"><h4>{{ hemisphere.title}}</h4></figcaption>
+                  </figure>
               </div>
-              <div class="card">
-                  <img src="{{ mars.Mars_Featured_Image }}" class="card-img-top" alt="..."> 
-                <div class="card-body">
-                    <h2 class="text-primary">Weather</h2>
-                  <p class="card-text">{{ mars.Mars_Weather }}</p>
-                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                </div>
-              </div>
-              <div class="card">
-                  <img src="{{ mars.Mars_Featured_Image }}" class="card-img-top" alt="..."> 
-                <div class="card-body">
-                    <h2 class="text-primary">Weather</h2>
-                  <p class="card-text">{{ mars.Mars_Weather }}</p>
-                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                </div>
-              </div>
-
-                  
-                  <!-- <h2 class="card-title text-primary">Featured Image</h2>
-                  <p class="card-text">source: jpl.nasa.org</p> -->
-                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                
-              <!-- </div> -->
-            </div>
-          </div>
-
-    <!-- Example row of columns
-    <div class="row">
-      <div class="col-md-4">
-        <h2 class="text-primary">News</h2>
-        
-        < <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      <!-- </div>
-      
-      <div class="row">
-          <div class="col-md-4">
-            <h2 class="text-primary">Featured Image</h2>
-            
-           
-            <! <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-          <!-- </div>
-
-      <div class="col-md-4">
-        <h2 class="text-primary">Weather</h2> -->
-        <!-- <p> </p> -->
-        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      <!-- </div>
-      <div class="col-md-4">
-        <h2 class="text-primary">Featured Image</h2> --> 
-        <!-- <figure class="figure"> -->
-          <!-- <div class="container"></div> -->
-         
+                 
+            {% endfor %}
           
-      <!-- </figure> -->
-
-
-
-<!--       
-            <div class="col-md-4">
-              <h2 class="text-primary">Weather</h2>
-              <p> </p>
-             <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-            <!-- </div>
-            <div class="col-md-4">
-              <h2 class="text-primary">Featured Image</h2> --> 
-              <!-- <figure class="figure"> -->
-                <!-- <div class="container"></div> -->
-        <!-- <p></p> -->
-        <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-      <!-- </div>
-      <div class="row"><br></div>
-      <div class="row">
-        <div class="col-md-4">
-          <h2 class="text-primary">News</h2>
-          <h5></h5> -->
-          <!-- <p></p>-->
-        <!-- </div>
-        <div class="col-md-4">
-          <h2 class="text-primary">Images</h2>
-          <p> </p> -->
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        <!-- </div>
-        <div class="col-md-4">
-          <h2 class="text-primary">Photos</h2>
-          <p></p> -->
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        <!-- </div> -->
     </div>
-
-
-
- 
-
-  </div> <!-- /container -->
-
-
-
-
+  </div> 
+</section>
 </body>
 </html>
