@@ -1,0 +1,7 @@
+/* I would like to make the table header go away */
+
+#mytable thead th {display: none;}
+
+/* Get rid of border on cards */
+
+.card border: none;

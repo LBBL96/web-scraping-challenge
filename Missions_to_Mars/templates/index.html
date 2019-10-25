@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="myCSS.css"
     <title>Mars</title>
 </head>
 <body>
@@ -30,14 +31,14 @@
     <div class="row">
       <!-- Cards to hold the news and weather -->
       <div class="card-group">
-          <div class="card">
+          <div class="card border-0">
             <div class="card-body">
               <h2 class="card-title text-primary">News</h2>
               <p class="card-text"><b>{{ mars.Mars_News_Headline }}</b></p>
               <p class="card-text">{{ mars.Mars_News_Article }}</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card border-0">
             <div class="card-body">
                 <h2 class="text-primary">Weather</h2>
               <p class="card-text">{{ mars.Mars_Weather }}</p>
@@ -48,12 +49,18 @@
 
       <!-- Next row holds the facts table -->
       <!-- <div class="row"> -->
-              <div class="col-md-6 mt-4">
-                  <h2 class = "text-primary">Mars Facts</h2>
-                  <hr>
-                  {{ mars.Mars_Facts | safe }}
+        <div class="col-md-4">
+
+        </div>
+              <div class="col-md-12 col-med-offset-2 mt-4">
+                  <h2 class = "text-primary text-center">Mars Facts</h2>
+                  
+                  <table id = "mytable" class = "table table-borderless table-striped mytable">
+                    <thead class = "mytable-thead">
+                  <tbody class = "mytable-thead-th table-striped {{ mars.Mars_Facts | safe }}</tbody>
+                  </table>
               </div> 
-      <!-- </div> -->
+      
       <!-- New row for the hemispheres -->
               <div class="row mt-5">
                   <div class="col-md-12 text-center">
@@ -64,7 +71,7 @@
               <div class="col-md-6">
                   <figure class="figure">
                       <img class = "figure-img img-fluid my-1" src="{{ hemisphere.image_url}}"> 
-                      <figcaption class = "figure-caption text-primary"><h4>{{ hemisphere.title}}</h4></figcaption>
+                      <figcaption class = "figure-caption text-center text-primary"><h4>{{ hemisphere.title}}</h4></figcaption>
                   </figure>
               </div>
                  
